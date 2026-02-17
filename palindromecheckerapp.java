@@ -35,25 +35,29 @@ public class palindromecheckerapp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Stack Based Palindrome Checker");
+        System.out.println("Queue + Stack Based Palindrome Check");
 
         System.out.print("Enter text: ");
         String input = sc.nextLine();
 
-        java.util.Stack<Character> stack = new java.util.Stack<>();
-        for (char c : input.toCharArray()) {
-            stack.push(c);
-        }
+        java.util.Queue<Character> queue = new java.util.LinkedList<>();
 
-        boolean isPalindrome5 = true;
+        java.util.Stack<Character> stack6 = new java.util.Stack<>();
+
         for (char c : input.toCharArray()) {
-            if (c != stack.pop()) {
-                isPalindrome5 = false;
+            queue.add(c);
+            stack6.push(c);
+        }
+        boolean isPalindrome6 = true;
+
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack6.pop())) {
+                isPalindrome6 = false;
                 break;
             }
         }
 
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome5);
+        System.out.println("Is Palindrome? : " + isPalindrome6);
     }
 }
