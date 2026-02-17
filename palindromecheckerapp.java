@@ -35,17 +35,20 @@ public class palindromecheckerapp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("Reverse String Based Palindrome Check");
+
         System.out.print("Enter text: ");
         String input = sc.nextLine();
 
-        boolean isPalindrome = true;
-        for (int i = 0; i < input.length() / 2; i++) {
-            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        String reversed = "";
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed = reversed + input.charAt(i);
         }
-        System.out.println("Input text: " + input);
-        System.out.println("Is it a palindrome?: " + isPalindrome);
+
+        boolean isPalindromeReverse = input.equals(reversed);
+
+        System.out.println("Original text: " + input);
+        System.out.println("Reversed text: " + reversed);
+        System.out.println("Is it a palindrome?: " + isPalindromeReverse);
     }
 }
