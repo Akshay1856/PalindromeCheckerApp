@@ -35,27 +35,25 @@ public class palindromecheckerapp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Character Array Based Validation");
+        System.out.println("Stack Based Palindrome Checker");
 
         System.out.print("Enter text: ");
         String input = sc.nextLine();
 
-        char[] chars = input.toCharArray();
+        java.util.Stack<Character> stack = new java.util.Stack<>();
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
 
-        int start = 0;
-        int end = chars.length - 1;
-        boolean isPalindrome4 = true;
-
-        while (start < end) {
-            if (chars[start] != chars[end]) {
-                isPalindrome4 = false;
+        boolean isPalindrome5 = true;
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                isPalindrome5 = false;
                 break;
             }
-            start++;
-            end--;
         }
 
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome4);
+        System.out.println("Is Palindrome? : " + isPalindrome5);
     }
 }
