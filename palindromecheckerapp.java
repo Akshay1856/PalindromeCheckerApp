@@ -41,24 +41,19 @@ public class palindromecheckerapp {
         String input = sc.nextLine();
     }
 
-    public static void checkUC10() {
-        String input10 = "A man a plan a canal Panama";
+    public static boolean checkPalindrome(String input) {
 
-        System.out.print("\n");
-        System.out.println("Case-Insensitive & Space-Ignored Palindrome");
+        int start = 0;
+        int end = input.length() - 1;
 
-        String normalized = input10.replaceAll("\\s+", "").toLowerCase();
-        boolean isPalindrome10 = true;
-
-        for (int i = 0, j = normalized.length() - 1; i < j; i++, j--) {
-
-            if (normalized.charAt(i) != normalized.charAt(j)) {
-                isPalindrome10 = false;
-                break;
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
             }
+            start++;
+            end--;
         }
 
-        System.out.println("Input : " + input10);
-        System.out.println("Is Palindrome? : " + isPalindrome10);
+        return true;
     }
 }
