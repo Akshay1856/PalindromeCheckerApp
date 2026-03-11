@@ -24,44 +24,27 @@
 
 import java.util.Scanner;
 public class palindromecheckerapp {
-    /**
-     * Application entry point.
-     * <p>
-     * This is the first method executed by the JVM
-     * when the program starts.
-     *
-     * @param args Command-line arguments
-     */
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Recursive Palindrome Checker");
-
-        System.out.print("Enter text: ");
-        String input = sc.nextLine();
-    }
-
     interface PalindromeStrategy {
         boolean check(String input);
     }
 
-    static class StackStrategy implements PCAFull.PalindromeStrategy {
-        @Override
-        public boolean check(String input) {
+    public static void runPerformanceTest(String input) {
 
-            java.util.Stack<Character> stack = new java.util.Stack<>();
-
-            for (char c : input.toCharArray()) {
-                stack.push(c);
+        PalindromeStrategy strategy = new PalindromeStrategy() {
+            @Override
+            public boolean check(String input) {
+                return false;
             }
+        };
 
-            for (char c : input.toCharArray()) {
-                if (c != stack.pop()) {
-                    return false;
-                }
-            }
+        long startTime = System.nanoTime();
+        boolean result = strategy.check(input);
+        long endTime = System.nanoTime();
 
-            return true;
-        }
+        long executionTime = (endTime - startTime) / 1000000; // convert to ms
+
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + result);
+        System.out.println("Execution Time : " + executionTime + " ms");
     }
 }
