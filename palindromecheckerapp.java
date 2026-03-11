@@ -35,27 +35,27 @@ public class palindromecheckerapp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Deque-Based Optimized Palindrome Checker");
+        System.out.println("Linked List Based Palindrome Checker");
 
         System.out.print("Enter text: ");
         String input = sc.nextLine();
 
-        java.util.Deque<Character> deque = new java.util.ArrayDeque<>();
+        java.util.LinkedList<Character> list = new java.util.LinkedList<>();
 
         for (char c : input.toCharArray()) {
-            deque.addLast(c);
+            list.add(c);
         }
 
-        boolean isPalindrome7 = true;
+        boolean isPalindrome8 = true;
 
-        while (deque.size() > 1) {
-            if (!deque.removeFirst().equals(deque.removeLast())) {
-                isPalindrome7 = false;
+        while (list.size() > 1) {
+            if (!list.removeFirst().equals(list.removeLast())) {
+                isPalindrome8 = false;
                 break;
             }
         }
 
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome7);
+        System.out.println("Is Palindrome? : " + isPalindrome8);
     }
 }
