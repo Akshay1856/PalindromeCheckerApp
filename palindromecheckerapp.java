@@ -35,27 +35,26 @@ public class palindromecheckerapp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Linked List Based Palindrome Checker");
+        System.out.println("Recursive Palindrome Checker");
 
         System.out.print("Enter text: ");
         String input = sc.nextLine();
 
-        java.util.LinkedList<Character> list = new java.util.LinkedList<>();
-
-        for (char c : input.toCharArray()) {
-            list.add(c);
-        }
-
-        boolean isPalindrome8 = true;
-
-        while (list.size() > 1) {
-            if (!list.removeFirst().equals(list.removeLast())) {
-                isPalindrome8 = false;
-                break;
-            }
-        }
+        boolean isPalindrome9 = check(input, 0, input.length() - 1);
 
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome8);
+        System.out.println("Is Palindrome? : " + isPalindrome9);
+
+    }
+
+    // Recursive function for UC9
+    private static boolean check(String s, int start, int end) {
+        if (start >= end) {
+            return true;
+        }
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
+        }
+        return check(s, start + 1, end - 1);
     }
 }
