@@ -41,19 +41,27 @@ public class palindromecheckerapp {
         String input = sc.nextLine();
     }
 
-    public static boolean checkPalindrome(String input) {
+    interface PalindromeStrategy {
+        boolean check(String input);
+    }
 
-        int start = 0;
-        int end = input.length() - 1;
+    static class StackStrategy implements PCAFull.PalindromeStrategy {
+        @Override
+        public boolean check(String input) {
 
-        while (start < end) {
-            if (input.charAt(start) != input.charAt(end)) {
-                return false;
+            java.util.Stack<Character> stack = new java.util.Stack<>();
+
+            for (char c : input.toCharArray()) {
+                stack.push(c);
             }
-            start++;
-            end--;
-        }
 
-        return true;
+            for (char c : input.toCharArray()) {
+                if (c != stack.pop()) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
