@@ -39,22 +39,26 @@ public class palindromecheckerapp {
 
         System.out.print("Enter text: ");
         String input = sc.nextLine();
-
-        boolean isPalindrome9 = check(input, 0, input.length() - 1);
-
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome9);
-
     }
 
-    // Recursive function for UC9
-    private static boolean check(String s, int start, int end) {
-        if (start >= end) {
-            return true;
+    public static void checkUC10() {
+        String input10 = "A man a plan a canal Panama";
+
+        System.out.print("\n");
+        System.out.println("Case-Insensitive & Space-Ignored Palindrome");
+
+        String normalized = input10.replaceAll("\\s+", "").toLowerCase();
+        boolean isPalindrome10 = true;
+
+        for (int i = 0, j = normalized.length() - 1; i < j; i++, j--) {
+
+            if (normalized.charAt(i) != normalized.charAt(j)) {
+                isPalindrome10 = false;
+                break;
+            }
         }
-        if (s.charAt(start) != s.charAt(end)) {
-            return false;
-        }
-        return check(s, start + 1, end - 1);
+
+        System.out.println("Input : " + input10);
+        System.out.println("Is Palindrome? : " + isPalindrome10);
     }
 }
